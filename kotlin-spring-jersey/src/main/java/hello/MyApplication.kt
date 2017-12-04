@@ -19,7 +19,7 @@ import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 
 fun main(args: Array<String>) {
-	SpringApplication.run(MyApplication::class.java, *args)
+    SpringApplication.run(MyApplication::class.java, *args)
 }
 
 @SpringBootApplication
@@ -28,7 +28,7 @@ open class MyApplication {
     @Bean open fun helloServletRegistrationBean() = ServletRegistrationBean(HelloServlet(), "/hello-servlet")
     @Bean open fun jerseyRegistrationBean(): ServletRegistrationBean {
         val jersey = ServletContainer(ResourceConfig().register(HelloService::class.java))
-		return ServletRegistrationBean(jersey, "/rest/*")
+        return ServletRegistrationBean(jersey, "/rest/*")
     }
 }
 
@@ -57,7 +57,7 @@ class MyController {
 }
 
 //raw servlet
-class HelloServlet: HttpServlet() {
+class HelloServlet : HttpServlet() {
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
         resp.writer.write("<h1> Hello </h1>")
     }
